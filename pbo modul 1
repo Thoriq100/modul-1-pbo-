@@ -1,0 +1,82 @@
+/**
+ * @(#)AgilMod1_Sorting.java
+ *
+ * AgilMod1_Sorting application
+ *
+ * @author 
+ * @version 1.00 2016/10/14
+ */
+ 
+import java.util.Scanner;
+ 
+class Data {
+	private int i, j, temp;
+	
+	//method / fungsi pengurutan data menggunakan Bubble Sort
+	public void pengurutanData (int[] nilai, int n) {
+		
+		for (i=0; i<n-1; i++) { 
+	       for (j=0; j<n-i-1; j++) {
+	           if (nilai[j] > nilai[j+1]) {
+	           	  temp = nilai[j];
+				  nilai[j] = nilai[j+1];
+				  nilai[j+1] = temp;
+	           }
+	       }
+		}
+	}
+	
+}
+
+class Deret extends Data {
+	private int[] data;
+	
+	//untuk menyimpan nilai yang dimasukkan
+	public Deret (int[] nilai) {
+		this.data = nilai;
+	}
+	
+	public Deret () {
+		
+	}
+	
+	//method untuk menampilkan data setelah diurutkan
+	public void cetakData(int[] data, int n) {
+		System.out.print("\noutput = ");
+		for (int i=0; i<n; i++) {
+			System.out.print(data[i] + " ");
+		}
+	}
+}
+
+//==== Main Program ====
+public class AgilMod1_Sorting2 {
+    
+    public static void main(String[] args) {
+    	
+    	//deklarasi object
+    	Scanner in = new Scanner(System.in);
+    	Deret angka = new Deret();
+    	
+    	//deklarasi variabel
+    	int[] data = new int[10];
+    	int i, j, jum_data;
+    	
+    	//masukkan jumlah deret (data)
+    	System.out.println("Input Jumlah Data = ");
+    	jum_data = in.nextInt();
+    	
+    	//masukkan nilai (data) yang ke-i
+    	for (i=0; i<jum_data; i++) {
+    		System.out.println("input " + (i+1) + " = ");
+    		data[i] = in.nextInt();
+    		Deret dataku = new Deret(data);
+    	}
+    	
+    	//panggil method pengurutanData()
+    	angka.pengurutanData(data, jum_data);
+    	
+    	//panggil method cetakData()
+    	angka.cetakData(data, jum_data);
+    }
+}
